@@ -1,9 +1,9 @@
 export const siteConfig = {
   // Brand Names in 3 Languages
   name: {
-    en: "KIDO Flowers & Gifts Shop",
-    am: "ኪዶ አበባ እና ስጦታ መሸጫ",
-    om: "Kennaafi Abaaboowwan Kido",
+    en: "EDOM Gallery & surprise delivery",
+    am: "ኤዶም ጋለሪ & ስጦታ መላኪያ",
+    om: "Gallery EDOM & Surpriise Delivery",
   },
   tagline: {
     en: "Beautiful flowers and custom surprise packages for your special moments",
@@ -11,28 +11,28 @@ export const siteConfig = {
     om: "Abaaboowwan miidhagoo fi qophii kennaa addaa guyyoota keessaniif",
   },
   about: {
-    en: "Kido Gifts & Flower Shop - Express your love through gifts and flowers.",
-    am: "ኪዶ አበባ እና ስጦታ መሸጫ - ፍቅሮን በስጦታ እና በአበባ ይግለጹ።",
-    om: "Suuqii Kennaa fi Abaabsaa Kido - Jaalala keessan kennaadhaan ibsaa.",
+    en: "EDOM Gallery & surprise delivery - Express your love through gifts and flowers.",
+    am: "ኤዶም ጋለሪ & ስጦታ መላኪያ - ፍቅሮን በስጦታ እና በአበባ ይግለጹ።",
+    om: "Gallery EDOM & Surpriise Delivery - Jaalala keessan kennaadhaan ibsaa.",
   },
 
   // Assets
-  logoUrl: "https://res.cloudinary.com/dmp2grjb1/image/upload/v1787681880/kido_logo_f2vkmh.png",
-  uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "kido_uploads",
+  logoUrl: "https://res.cloudinary.com/dmp2grjb1/image/upload/v1789161285/edom_gallerys_hy5u0i.png",
+  uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "edom_gallery",
 
   // Contact & Social Media
-  telegramUsername: "kido1222",
-  telegramChannel: "https://t.me/kidodelivery",
-  tiktokUrl: "https://tiktok.com/@kido.surprise.delivery",
-  instagramUrl: "https://instagram.com/kido122227",
-  phoneDisplay: "+251 951 161 632",
-  phoneRaw: "+251951161632",
+  telegramUsername: "edueal09",
+  telegramChannel: "https://t.me/+l9xtBDaqb4tjZDQ8",
+  tiktokUrl: "https://tiktok.com/@edueal",
+  instagramUrl: "https://instagram.com/edueal09",
+  phoneDisplay: "+251 968 324 017",
+  phoneRaw: "+251968324017",
 
   // Store Location & Maps Search Query
   locationName: {
-    en: "kido gift shop Harar, Ethiopia",
-    am: "ኪዶ ስጦታ ሱቅ ሐረር፣ ኢትዮጵያ",
-    om: "kido gift shop Harar, Itoophiyaa",
+    en: "EDOM Gallery & surprise delivery, Harar, Ethiopia",
+    am: "ኤዶም ጋለሪ & ስጦታ መላኪያ, ሐረር፣ ኢትዮጵያ",
+    om: "Gallery EDOM & Surpriise Delivery, diredawa, Itoophiyaa",
   },
-  mapSearchQuery: "Kido+gift+shop+harar",
+  mapSearchQuery: "EDOM+gallery+diredawa",
 };
