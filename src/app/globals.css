@@ -2,13 +2,13 @@
 
 /* ===== ROOT COLORS ===== */
 :root {
-    --brand-gold: #f39c12;
-    --brand-green: #2f794e;
-    --brand-light: #ffffff;
-    --brand-teal: #16a085;
-    --soft-green: #f0fdf4;
-    --text-dark: #1a1a1a;
-    --brand-bg: #e3e7eb;
+    --brand-gold: #cca662;       /* Sunlit Bergamot Gold */
+    --brand-green: #4f6d63;      /* Crisp Herbaceous Cypress */
+    --brand-light: #ffffff;      /* Pure Card Background */
+    --brand-teal: #82a398;       /* Neroli Petal / Sea Breeze */
+    --soft-green: #f2f7f5;       /* Fresh Dewdrop Wash */
+    --text-dark: #1b2623;        /* Forest Pine Ink */
+    --brand-bg: #eeeeee;         /* Crisp Frosted Glass */
 
     --background: var(--brand-bg);
     --foreground: var(--text-dark);
@@ -18,9 +18,8 @@
     --event-secondary: var(--brand-gold);
     --event-accent: var(--brand-teal);
     --event-soft: var(--soft-green);
-    --event-glow: rgba(47, 121, 78, 0.18);
+    --event-glow: rgba(79, 109, 99, 0.15);
 }
-
 /* =====================================================
    EVENT THEMES
    ===================================================== */
