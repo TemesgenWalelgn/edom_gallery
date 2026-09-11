@@ -103,8 +103,8 @@ export default function AdminDashboard() {
 
   // Sync cache immediately on client mount
   useEffect(() => {
-    const cachedTheme = localStorage.getItem("kido_theme_name");
-    const cachedEnabled = localStorage.getItem("kido_theme_enabled");
+    const cachedTheme = localStorage.getItem("edom_theme_name");
+    const cachedEnabled = localStorage.getItem("edom_theme_enabled");
     if (cachedTheme) setEventTheme(cachedTheme);
     if (cachedEnabled !== null) setEventEnabled(cachedEnabled === "true");
   }, []);
@@ -184,8 +184,8 @@ export default function AdminDashboard() {
         setEventParticles(data.particles === true);
 
         if (typeof window !== "undefined") {
-          localStorage.setItem("kido_theme_name", data.event || "none");
-          localStorage.setItem("kido_theme_enabled", data.enabled === true ? "true" : "false");
+          localStorage.setItem("edom_theme_name", data.event || "none");
+          localStorage.setItem("edom_theme_enabled", data.enabled === true ? "true" : "false");
         }
       },
       (error) => {
@@ -215,8 +215,8 @@ export default function AdminDashboard() {
       return ["all", "wedding", "shimigilina", "birthday", "anniversery", "graduation"];
     }
 
-    if (tab === "decoration") {
-      return ["all", "birthday", "shimigilina", "nika", "wedding", "babtaizm", "graduation"];
+    if (tab === "direOnline") {
+      return ["all", "mens", "womans"];
     }
 
     return ["all", "men", "women", "children", "father", "mother", "new born"];
@@ -310,9 +310,9 @@ export default function AdminDashboard() {
         targetTabType = targetTempSub.type;
       } else {
         const flowerDefaults = getDefaultSubCategories("flower");
-        const decoDefaults = getDefaultSubCategories("decoration");
+        const direDefaults = getDefaultSubCategories("direOnline");
         if (flowerDefaults.includes(copyTargetSub)) targetTabType = "flower";
-        else if (decoDefaults.includes(copyTargetSub)) targetTabType = "decoration";
+        else if (direDefaults.includes(copyTargetSub)) targetTabType = "direOnline";
         else targetTabType = "surprise";
       }
 
@@ -374,8 +374,8 @@ export default function AdminDashboard() {
       });
 
       if (typeof window !== "undefined") {
-        localStorage.setItem("kido_theme_name", eventTheme);
-        localStorage.setItem("kido_theme_enabled", eventEnabled ? "true" : "false");
+        localStorage.setItem("edom_theme_name", eventTheme);
+        localStorage.setItem("edom_theme_enabled", eventEnabled ? "true" : "false");
       }
 
     } catch (error) {
@@ -737,7 +737,7 @@ export default function AdminDashboard() {
                   className="w-full p-3 border border-gray-200 rounded-xl text-sm bg-white text-gray-800 outline-none"
                 >
                   <option value="none">
-                    Normal KIDO Theme
+                    Normal EDOM Theme
                   </option>
                   <option value="newyear">
                     🇪🇹 Ethiopian New Year
@@ -854,7 +854,7 @@ export default function AdminDashboard() {
                 >
                   <option value="surprise">Surprise</option>
                   <option value="flower">Flowers</option>
-                  <option value="decoration">Decoration</option>
+                  <option value="direOnline">Dire Online</option>
                 </select>
 
                 <input
@@ -1164,7 +1164,7 @@ export default function AdminDashboard() {
           {[
             { id: "surprise", label: "Surprise" },
             { id: "flower", label: "Flowers" },
-            { id: "decoration", label: "Decoration" }
+            { id: "direOnline", label: "Dire Online" }
           ].map((tab, index) => (
             <button
               key={`${tab.id}-${index}`}

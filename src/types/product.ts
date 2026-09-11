@@ -8,7 +8,7 @@ export interface Product {
   type:
     | "surprise"
     | "flower"
-    | "decoration";
+    | "direOnline";
 
   category: string;
 

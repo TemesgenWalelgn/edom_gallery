@@ -55,7 +55,7 @@ export default function UserPage() {
 
   // ===== TRACK USER PAGE VIEW (1 Count Per Browser Session) =====
   useEffect(() => {
-    const hasVisitedSession = sessionStorage.getItem("kido_visited_session");
+    const hasVisitedSession = sessionStorage.getItem("edom_visited_session");
     if (!hasVisitedSession) {
       const analyticsRef = doc(db, "analytics", "overview");
       setDoc(
@@ -66,14 +66,14 @@ export default function UserPage() {
         { merge: true }
       ).catch((err) => console.error("Error recording page view:", err));
 
-      sessionStorage.setItem("kido_visited_session", "true");
+      sessionStorage.setItem("edom_visited_session", "true");
     }
   }, []);
 
   // Sync cache immediately on client mount
   useEffect(() => {
-    const cachedTheme = localStorage.getItem("kido_theme_name");
-    const cachedEnabled = localStorage.getItem("kido_theme_enabled");
+    const cachedTheme = localStorage.getItem("edom_theme_name");
+    const cachedEnabled = localStorage.getItem("edom_theme_enabled");
     if (cachedTheme) setEventTheme(cachedTheme);
     if (cachedEnabled !== null) setEventEnabled(cachedEnabled === "true");
   }, []);
@@ -96,7 +96,7 @@ export default function UserPage() {
       tabs: {
         surprise: "የሰርፕራይዝ ጥቅል",
         flower: "አበቦች",
-        decoration: "የዲኮር ስራ"
+        direOnline: "ድሬ ገበያ"
       },
       subs: {
         flower: {
@@ -107,14 +107,11 @@ export default function UserPage() {
           anniversery: "አንቨርሰሪ በዓል",
           graduation: "ምረቃ"
         },
-        decoration: {
+        direOnline: {
           all: "ሁሉም",
-          birthday: "ልደት",
-          shimigilina: "ሽምግልና",
-          nika: "ኒካህ",
-          wedding: "ሰርግ",
-          babtaizm: "ጥምቀት",
-          graduation: "ምረቃ"
+          mens: "ለወንድ",
+          womans: "ለሴት",
+        
         },
         surprise: {
           all: "ሁሉም",
@@ -129,7 +126,7 @@ export default function UserPage() {
       orderPhrases: {
         surprise: "ዌብሳይታችሁ ላይ ካየሁት አስገራሚ ፓኬጅ ውስጥ ይሄንን ማዘዝ እፈልጋለው",
         flower: "ዌብሳይታችሁ ላይ ካየሁት የአበባ እቅፍ ውስጥ ይሄንን ማዘዝ እፈልጋለው",
-        decoration: "ዌብሳይታችሁ ላይ ካየሁት የዲኮር ውስጥ ይሄንን ማዘዝ እፈልጋለው",
+        direOnline: "ዌብሳይታችሁ ላይ ካየሁት የድሬ ኦንላይን ሽቶ ውስጥ ይሄንን ማዘዝ እፈልጋለው",
         default: "ዌብሳይታችሁ ላይ ካየሁት ፓኬጅ ውስጥ ይሄንን ማዘዝ እፈልጋለው"
       },
       callToAction: "አመሰግናለው"
@@ -148,7 +145,7 @@ export default function UserPage() {
       tabs: {
         surprise: "Surprise pkg",
         flower: "Flowers",
-        decoration: "Event Decor"
+        direOnline: "Direct Online"
       },
       subs: {
         flower: {
@@ -159,14 +156,10 @@ export default function UserPage() {
           anniversery: "For Anniversary",
           graduation: "For Graduation"
         },
-        decoration: {
+        direOnline: {
           all: "All",
-          birthday: "For Birthday",
-          shimigilina: "For Engagement",
-          nika: "For Nika",
-          wedding: "For Wedding",
-          babtaizm: "For Baptism",
-          graduation: "For Graduation"
+          mens: "For men",
+          womans: "For woman",
         },
         surprise: {
           all: "All",
@@ -181,7 +174,7 @@ export default function UserPage() {
       orderPhrases: {
         surprise: "Hello, I would like to order this surprise package from your website:",
         flower: "Hello, I would like to order this flower bouquet from your website:",
-        decoration: "Hello, I would like to order this decoration package from your website:",
+        direOnline: "Hello, I would like to order this purfume from direOnline on your website:",
         default: "Hello, I would like to order this package from your website:"
       },
       callToAction: "Thank you"
@@ -200,7 +193,7 @@ export default function UserPage() {
       tabs: {
         surprise: "surprisee",
         flower: "Abaaboo",
-        decoration: "decoraa"
+        direOnline: "diree online"
       },
       subs: {
         flower: {
@@ -211,14 +204,11 @@ export default function UserPage() {
           anniversery: "Ayyaana Waggaa",
           graduation: "Eebbifa"
         },
-        decoration: {
+        direOnline: {
           all: "Hunda",
-          birthday: "Guyyaa Dhalootaa",
-          shimigilina: "Kadhannaa",
-          nika: "Nika",
-          wedding: "Guyyaa Gaa'elaa",
-          babtaizm: "Cuuphaa",
-          graduation: "Eebbifa"
+          mens: "Dhiira",
+          womans: "Dubara",
+          
         },
         surprise: {
           all: "Hunda",
@@ -233,7 +223,7 @@ export default function UserPage() {
       orderPhrases: {
         surprise: "Marsariitii keessan irraa paakajeetii dinqisiisaa kana ajajuu barbaada:",
         flower: "Marsariitii keessan irraa abaaboo kana ajajuu barbaada:",
-        decoration: "Marsariitii keessan irraa paakajeetii miidhaginaa kana ajajuu barbaada:",
+        direOnline: "Akkam jirtu, marsariitii keessanirraa direOnline irraa urgooftuu kana ajajuun barbaada:",
         default: "Marsariitii keessan irraa kana ajajuu barbaada:"
       },
       callToAction: "Galatoomaa"
@@ -282,8 +272,8 @@ export default function UserPage() {
 
         // Keep local cache synced with Firebase to prevent flash
         if (typeof window !== "undefined") {
-          localStorage.setItem("kido_theme_name", data.event || "none");
-          localStorage.setItem("kido_theme_enabled", data.enabled === true ? "true" : "false");
+          localStorage.setItem("edom_theme_name", data.event || "none");
+          localStorage.setItem("edom_theme_enabled", data.enabled === true ? "true" : "false");
         }
       },
       error => console.error("Event theme:", error)
@@ -308,8 +298,8 @@ export default function UserPage() {
       return ["all", "wedding", "shimigilina", "birthday", "anniversery", "graduation"];
     }
 
-    if (tab === "decoration") {
-      return ["all", "birthday", "shimigilina", "nika", "wedding", "babtaizm", "graduation"];
+    if (tab === "direOnline") {
+      return ["all", "mens", "womans"];
     }
 
     return ["all", "men", "women", "children", "father", "mother", "new born"];
@@ -524,7 +514,7 @@ export default function UserPage() {
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
 
-          {(["surprise", "flower", "decoration"] as const).map((tab, index) => (
+          {(["surprise", "flower", "direOnline"] as const).map((tab, index) => (
 
             <button
               key={`${tab}-${index}`}

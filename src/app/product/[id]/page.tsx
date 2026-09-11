@@ -52,7 +52,7 @@ export default function ProductDetails({
   }
 
   const telegramMessage = encodeURIComponent(
-    `Hello Kido Surprise Delivery,
+    `Hello Edom Gallery & Surprise Delivery,
 I would like to order:
 
 Product: ${product.title}
@@ -61,7 +61,7 @@ Category: ${product.category}`
   );
 
   const telegramUrl =
-    `https://t.me/kido1222?text=${telegramMessage}`;
+    `https://t.me/edueal09?text=${telegramMessage}`;
 
   return (
     <main className="max-w-5xl mx-auto p-8">

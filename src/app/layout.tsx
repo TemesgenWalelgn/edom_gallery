@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Kido Gifts & Flowers",
+  title: "Edom Gallery & surprise delivery",
   description: "Beautiful gifts and flowers",
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   const themeScript = `
     try {
-      const cachedTheme = localStorage.getItem('kido_event_theme');
+      const cachedTheme = localStorage.getItem('edom_event_theme');
       if (cachedTheme && cachedTheme !== 'none') {
         document.documentElement.className += ' theme-' + cachedTheme;
       }
@@ -48,7 +48,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const cachedTheme = localStorage.getItem('kido_event_theme');
+                const cachedTheme = localStorage.getItem('edom_event_theme');
                 if (cachedTheme && cachedTheme !== 'none') {
                   document.documentElement.className += ' theme-' + cachedTheme;
                 }
