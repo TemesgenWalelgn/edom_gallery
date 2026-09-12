@@ -145,7 +145,7 @@ export default function UserPage() {
       tabs: {
         surprise: "Surprise pkg",
         flower: "Flowers",
-        direOnline: "Direct Online"
+        direOnline: "Dire Online"
       },
       subs: {
         flower: {
