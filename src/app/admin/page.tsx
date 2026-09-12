@@ -69,6 +69,10 @@ export default function AdminDashboard() {
   const [savingEventTheme, setSavingEventTheme] = useState(false);
   const [showEventPanel, setShowEventPanel] = useState(false);
 
+  // Safe Cloudinary fallbacks
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "edom_gallery";
+  const uploadPreset = siteConfig.uploadPreset || process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "edom_gallery";
+
   // ===== AUTHENTICATION CHECK =====
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -1400,26 +1404,29 @@ export default function AdminDashboard() {
                 : product.images.length < 3) && (
 
                 <CldUploadWidget
-                  uploadPreset={siteConfig.uploadPreset}
+                  uploadPreset={uploadPreset}
+                  options={{ cloudName: cloudName }}
                   onSuccess={(res: any) => {
-                    setProduct((prev) => ({
-                      ...prev,
-                      images: [
-                        ...prev.images,
-                        res.info.secure_url
-                      ]
-                    }));
+                    if (res?.info?.secure_url) {
+                      setProduct((prev) => ({
+                        ...prev,
+                        images: [
+                          ...prev.images,
+                          res.info.secure_url
+                        ]
+                      }));
+                    }
 
-                    document.body.style.overflow = "auto";
-                    document.body.style.position = "static";
+                    if (typeof document !== "undefined") {
+                      document.body.style.overflow = "auto";
+                      document.body.style.position = "static";
+                    }
                   }}
                 >
                   {({ open }) => (
                     <button
                       type="button"
-                      onClick={() => {
-                        open();
-                      }}
+                      onClick={() => open?.()}
                       className="w-full py-3 bg-[var(--text-dark)] text-[var(--brand-light)] rounded-2xl font-bold text-xs md:text-sm shadow-md hover:bg-black transition-all"
                     >
                       Upload Image{" "}
@@ -1436,7 +1443,8 @@ export default function AdminDashboard() {
 
             <button
               type="submit"
-              className="w-full py-3.5 bg-[var(--brand-green)] text-white rounded-2xl font-bold text-sm md:text-base shadow-lg hover:opacity-95 transition-all"
+              disabled={loading}
+              className="w-full py-3.5 bg-[var(--brand-green)] text-white rounded-2xl font-bold text-sm md:text-base shadow-lg hover:opacity-95 transition-all disabled:opacity-50"
             >
               {loading ? "Saving..." : "Save Product"}
             </button>
@@ -1573,7 +1581,7 @@ export default function AdminDashboard() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
 
           <div>
-           <h3 className="text-base font-bold text-[var(--brand-gold)]">
+            <h3 className="text-base font-bold text-[var(--brand-gold)]">
               {siteConfig.name.en.split(" ")[0]} Admin Panel
             </h3>
 
