@@ -2,13 +2,13 @@
 
 /* ===== ROOT COLORS ===== */
 :root {
-    --brand-gold: #c5a059;       /* Refined Champagne Gold */
-    --brand-green: #97cde7;      /* Deep Slate / Gallery Charcoal */
+    --brand-gold: #e59819;       /* Vibrant Warm Amber */
+    --brand-green: #1a365d;      /* Deep Royal Navy */
     --brand-light: #ffffff;
-    --brand-teal: #b87333;       /* Warm Copper Accent */
-    --soft-green: #f8f6f0;       /* Warm Off-White / Canvas */
-    --text-dark: #1e2022;
-    --brand-bg: #f2efe9;        /* Soft Gallery Plaster */
+    --brand-teal: #0d9488;       /* Modern Deep Cyan */
+    --soft-green: #eff6ff;       /* Soft Frost Blue */
+    --text-dark: #0f172a;
+    --brand-bg: #e8ecf2;        /* Crisp Muted Cool Gray */
 
     --background: var(--brand-bg);
     --foreground: var(--text-dark);
@@ -18,7 +18,7 @@
     --event-secondary: var(--brand-gold);
     --event-accent: var(--brand-teal);
     --event-soft: var(--soft-green);
-    --event-glow: rgba(197, 160, 89, 0.22);
+    --event-glow: rgba(26, 54, 93, 0.2);
 }
 /* =====================================================
    EVENT THEMES
