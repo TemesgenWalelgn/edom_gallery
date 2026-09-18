@@ -2,23 +2,103 @@
 
 /* ===== ROOT COLORS ===== */
 :root {
-    --brand-gold: #e59819;       /* Vibrant Warm Amber */
-    --brand-green: #1a365d;      /* Deep Royal Navy */
-    --brand-light: #ffffff;
-    --brand-teal: #0d9488;       /* Modern Deep Cyan */
-    --soft-green: #eff6ff;       /* Soft Frost Blue */
-    --text-dark: #0f172a;
-    --brand-bg: #e8ecf2;        /* Crisp Muted Cool Gray */
+  /* ===== BRAND GOLD ===== */
+  --brand-gold: #D4AF37;        /* Metallic Royal Gold */
+  --brand-gold-light: #F3E5AB;  /* Champagne Gold Highlight */
+  --brand-gold-dark: #997A15;   /* Antique Deep Bronze */
 
-    --background: var(--brand-bg);
-    --foreground: var(--text-dark);
+  /* Legacy aliases mapped to dark theme */
+  --brand-green: #D4AF37;
+  --brand-teal: #E5C158;
+  --soft-green: #1E1E24;
+  --brand-light: #141417;       /* Dark card & header base */
 
-    /* Event theme variables */
-    --event-primary: var(--brand-green);
-    --event-secondary: var(--brand-gold);
-    --event-accent: var(--brand-teal);
-    --event-soft: var(--soft-green);
-    --event-glow: rgba(26, 54, 93, 0.2);
+  /* ===== DARK SURFACES ===== */
+  --brand-bg: #0B0B0D;          /* Deep Obsidian Canvas */
+  --surface-card: #141417;      /* Clean Elevated Cards */
+  --surface-secondary: #1E1E24; /* Inputs / Pills / Subcategories */
+  --surface-hover: #26262E;      /* Hover background */
+
+  /* ===== TEXT ===== */
+  --text-primary: #FFFFFF;      /* Crisp Heading White */
+  --text-secondary: #FFFFFF;    /* Pure White for Inactive Pills & Descriptions */
+  --text-muted: #E0E0E6;        /* Bright Muted Metadata */
+  --text-dark: #08080A;         /* Deepest black (fixes footer bg) */
+  --text-on-gold: #0B0B0D;      /* Text on gold buttons */
+
+  /* ===== GLOBAL & BORDERS ===== */
+  --background: var(--brand-bg);
+  --foreground: var(--text-primary);
+  --border-subtle: #26262B;
+  --border-gold: rgba(212, 175, 55, 0.45);
+
+  /* ===== EVENT THEME VARIABLES ===== */
+  --event-primary: var(--brand-gold);
+  --event-secondary: var(--brand-gold-light);
+  --event-accent: var(--brand-gold-dark);
+  --event-soft: var(--surface-secondary);
+  --event-glow: rgba(212, 175, 55, 0.22);
+}
+
+/* ===== FIX FOOTER BACKGROUND ===== */
+footer {
+  background-color: #08080A !important;
+  border-color: #1F1F24 !important;
+}
+
+/* ===== SUBCATEGORY MENU PILLS (USER PAGE & ADMIN PAGE) ===== */
+
+/* 1. Inactive subcategory buttons: Dark background, pure white text */
+.overflow-x-auto button:not([class*="bg-[var(--text-dark)]"]):not([class*="bg-[var(--brand-green)]"]):not([class*="bg-amber-100"]) {
+  background-color: var(--surface-secondary) !important;
+  color: #FFFFFF !important;
+  border-color: var(--border-subtle) !important;
+  opacity: 1 !important;
+}
+
+/* 2. Inactive button hover: Dark hover surface, text turns gold */
+.overflow-x-auto button:not([class*="bg-[var(--text-dark)]"]):not([class*="bg-[var(--brand-green)]"]):not([class*="bg-amber-100"]):hover {
+  background-color: var(--surface-hover) !important;
+  color: var(--brand-gold) !important;
+  border-color: var(--border-gold) !important;
+}
+
+/* 3. Active menu button (Default state): Solid gold background, dark text */
+.overflow-x-auto button[class*="bg-[var(--text-dark)]"],
+.overflow-x-auto button[class*="bg-[var(--brand-green)]"] {
+  background-color: var(--brand-gold) !important;
+  color: var(--text-on-gold) !important;
+  border-color: var(--brand-gold) !important;
+  box-shadow: 0 0 14px var(--event-glow) !important;
+}
+
+/* 4. Active menu button HOVER: Brighter champagne gold background + glow */
+.overflow-x-auto button[class*="bg-[var(--text-dark)]"]:hover,
+.overflow-x-auto button[class*="bg-[var(--brand-green)]"]:hover {
+  background-color: var(--brand-gold-light) !important;
+  color: #000000 !important;
+  border-color: var(--brand-gold-light) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.45) !important;
+}
+
+/* ===== CARD DESCRIPTIONS (FORCE WHITE) ===== */
+.theme-card p.line-clamp-3,
+.theme-card p[class*="text-gray-500"],
+.theme-card p.italic {
+  color: #FFFFFF !important;
+  opacity: 0.95;
+}
+
+/* Card package tags (Pkg 1, Pkg 2, etc.) */
+.theme-card span.tracking-widest {
+  color: #E0E0E6 !important;
+}
+
+/* ===== SORT DROPDOWN STYLING ===== */
+select[title="Sort package list"] {
+  background-color: var(--surface-secondary) !important;
+  color: #FFFFFF !important;
+  border-color: var(--border-subtle) !important;
 }
 /* =====================================================
    EVENT THEMES
